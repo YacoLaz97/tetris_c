@@ -1,88 +1,16 @@
-//Piezas creacion, randomizador
+//PIEZAS CREACION, RANDOMIZACION,OBTENCION
 
 
 #include <time.h>
 #include <stdlib.h>
 #include "juego.h"
-//Colores
-#define N 15 // Transparente (Fondo)
-#define A 14 // Amarillo (O)
-#define C 3  // Cian/Celeste (I)
-#define V 2  // Verde(S)
-#define R 4  // Rojo (Z)
-#define M 5  // Magenta/Purpura (T)
-#define B 1  // Azul (J)
-#define L 6  // Marron/Naranja (L)
 
-//PIEZAS
-// I
-Pieza pieza_I =
-{
-    {N, N, N, N},
-    {C, C, C, C},
-    {N, N, N, N},
-    {N, N, N, N}
-};
-// O
-Pieza pieza_O =
-{
-    {N, N, N, N},
-    {N, A, A, N},
-    {N, A, A, N},
-    {N, N, N, N}
-};
-// T
-Pieza pieza_T =
-{
-    {N, M, N, N},
-    {M, M, M, N},
-    {N, N, N, N},
-    {N, N, N, N}
-};
-// S
-Pieza pieza_S =
-{
-    {N, V, V, N},
-    {V, V, N, N},
-    {N, N, N, N},
-    {N, N, N, N}
-};
-// Z
-Pieza pieza_Z =
-{
-    {R, R, N, N},
-    {N, R, R, N},
-    {N, N, N, N},
-    {N, N, N, N}
-};
-// J
-Pieza pieza_J =
-{
-    {B, N, N, N},
-    {B, B, B, N},
-    {N, N, N, N},
-    {N, N, N, N}
-};
-// L
-Pieza pieza_L =
-{
-    {N, N, L, N},
-    {L, L, L, N},
-    {N, N, N, N},
-    {N, N, N, N}
-};
 
-/*typedef struct {
-    int vectorBolsa[7];//BOLSA DE VECTOR
-    int ultimaPiezaEntregada;
-    int bolsaVacia;//0 SI , 1 NO
-} ControlBolsa;*/
-
-//RANDOMIZADOR DE PIEZAS
 void inicializar_Control_Bolsa(ControlBolsa *control)
 {
     //Iniciamos La ultima pieza fuera de rango (piezasa entre 0 y 6)
     control->ultimaPiezaEntregada=-1;
+    control->bolsaVacia=0;
     //Mezclamos la bolsa
     Mezclar_Bolsa(control);
 }

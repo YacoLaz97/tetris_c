@@ -22,10 +22,12 @@ Entrega: Sí/No
 #include "../GBT/gbt_graficos.h"
 #include "juego.h"
 #include "graficos.h"
+#include "piezas.h"
 
 #define ANCHO_VENTANA 128
 #define ALTO_VENTANA 128
 #define CANT_COLORES 16
+
 
 tGBT_ColorRGB paletaCGA[CANT_COLORES] =
 {
@@ -53,13 +55,10 @@ int main()
 {
     srand(time(NULL));//Se utiliza para el randomizador de pieza
 
-    //Crea la bolsa de piezas y la llena
-    ControlBolsa miBolsa;
-    inicializar_Control_Bolsa(&miBolsa);
+    Tablero miTablero;//matriz tablero
+    ControlBolsa miBolsa;//vectorbolsa, ultima pieza, bolsa vacia
+    EstadoJuego miJuego;//posicion,velocidad,idpieza,temp
 
-    //Declaracion e inicializacion del tablero logico
-    Tablero miTablero;
-    inicializar_Tablero(miTablero);
 
     //Inicializacion de la biblioteca grafica GBT
     gbt_iniciar();
@@ -69,8 +68,16 @@ int main()
     //0 para que la libreria cargue sus colores base
     gbt_aplicar_paleta(paletaCGA,CANT_COLORES,0);
 
-    int corriendo=1;
+    /**----INICIALIZACION DE LA PARTIDA----*/
+    inicializar_Control_Bolsa(&miBolsa);//Crea la bolsa de piezas y la llena
+    printf("La bolsa:\n");
+    for(int i=0;i<7;i++){
+        printf("%d\t",miBolsa.vectorBolsa[i]);//VEMOS BOLSA EN CONSOLA
+    }
+    inicializar_Tablero(miTablero);//Declaracion e inicializacion del tablero
+    iniciar_Partida(&miJuego, &miBolsa);
 
+    int corriendo=1;//iniciamos el juego con 1 termina en 0
     while (corriendo)
     {
         gbt_procesar_entrada();
@@ -81,15 +88,16 @@ int main()
         //1 Fijamos al tablero
         //2 Volver a pedir Pieza
         //3 iniciar caida y posiciones de pieza en funcion
-
+        actualizar_Juego(&miJuego, &miBolsa, miTablero);//Actualizacion para el movimiento de la pieza
 
         //RENDERIZADO
         gbt_borrar_backbuffer(0); // Limpiar pantalla (negro)
 
         //DIBUJAMOS EL TABLERO ESTATICO
-        dibujarTablero(miTablero); // Dibujar el estado actual
+        dibujar_Tablero(miTablero); // Dibujar el estado actual
 
         //DIBUJAMOS LA PIEZA CAYENDO
+        dibujar_Pieza_Caida(&miJuego);//Dibuja la caida de la pieza
 
         gbt_volcar_backbuffer(); //Envia a pantalla lo dibujado
         gbt_esperar(16); // Aproximadamente 60 FPS
