@@ -4,7 +4,7 @@ Este es un desarrollo de Tetris programado en **Lenguaje C** como trabajo práct
 
 LINK A BIBLIOTECA GBT
 ```text
-/https://gitlab.com/RodrigoMaranzana/libgbt-dist
+https://gitlab.com/RodrigoMaranzana/libgbt-dist
 ```
 
 ## 📂 Estructura del Proyecto
