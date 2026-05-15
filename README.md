@@ -1,6 +1,6 @@
 # Proyecto Tetris - Universidad
 
-Este es un desarrollo de Tetris programado en **Lenguaje C** como trabajo práctico para la universidad. El proyecto utiliza la biblioteca gráfica **GBT** para la gestión de pantalla y sonidos.
+Este es un desarrollo de Tetris programado en **Lenguaje C** como trabajo práctico para la universidad. El proyecto utiliza la biblioteca gráfica **GBT**.
 
 LINK A BIBLIOTECA GBT
 ```text
