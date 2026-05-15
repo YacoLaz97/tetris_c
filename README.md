@@ -2,9 +2,9 @@
 
 Este es un desarrollo de Tetris programado en **Lenguaje C** como trabajo práctico para la universidad. El proyecto utiliza la biblioteca gráfica **GBT** para la gestión de pantalla y sonidos.
 
+LINK A BIBLIOTECA GBT
 ```text
-/LINK A BIBLIOTECA GBT
-https://gitlab.com/RodrigoMaranzana/libgbt-dist
+/https://gitlab.com/RodrigoMaranzana/libgbt-dist
 ```
 
 ## 📂 Estructura del Proyecto
